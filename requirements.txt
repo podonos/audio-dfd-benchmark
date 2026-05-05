@@ -1,0 +1,14 @@
+torch>=2.1.0
+torchaudio
+torchcodec
+transformers>=4.30.0
+huggingface_hub
+soundfile
+librosa
+numpy
+scipy
+scikit-learn
+pandas
+requests
+realitydefender
+matplotlib
