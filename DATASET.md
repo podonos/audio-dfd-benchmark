@@ -72,18 +72,18 @@ Files are sequentially numbered starting from `0`. The format extension indicate
 
 ## Gold Standard Labels
 
-The ground-truth labels (`labels_speech.csv`) are **NOT included in this public release** to prevent overfitting and to maintain the benchmark's role as an independent evaluation set. Submit your `predictions.csv` to be scored against the private gold standard.
+The ground-truth labels (`labels_speech.csv`) are **NOT included in this public release** to prevent overfitting and to maintain the benchmark's role as an independent evaluation set. Email your `predictions.csv` to **hello@podonos.com** to be scored against the private gold standard.
 
 ## Submission Format
 
-Produce a `predictions.csv` with two columns:
+Produce a `predictions.csv` with three columns — `filename`, `label`, and `latency_ms` (mean per-file inference time in milliseconds):
 
 ```csv
-filename,label
-0.flac,real
-1.webm,fake
-2.mp3,real
+filename,label,latency_ms
+0.flac,real,247.09
+1.webm,fake,493.58
+2.mp3,real,289.01
 ...
 ```
 
-Labels must be exactly `real` or `fake` (lowercase).
+Labels must be exactly `real` or `fake` (lowercase). `latency_ms` is used to report the leaderboard's Lat(ms) / RTF columns; leave it blank if you cannot measure it. Email your `predictions.csv` to **hello@podonos.com**.
