@@ -99,6 +99,48 @@ See [`DATASET.md`](DATASET.md) for full construction details.
 
 ---
 
+## Telephony Tracks (New)
+
+Most real-world fraud, KYC, and call-center audio never arrives as a studio file. It comes over a phone or mobile/VoIP link: band-limited, resampled, and compressed by a low-bitrate speech codec. We provide **two telephony tracks** that stress detectors under those conditions. Each is the **same 4,524 clips and the same hidden labels** as the main benchmark, only degraded to channel grade, so scores are directly comparable to the studio leaderboard above:
+
+- **Narrowband, 8 kHz** (2G/3G): [`dataset_8k_nb/`](dataset_8k_nb/)
+- **Wideband, 16 kHz** (4G/5G): [`dataset_16k_wb/`](dataset_16k_wb/)
+
+In each track, every clip is decoded, resampled to the track rate with a high-quality anti-aliased resampler, band-pass filtered to the channel passband, passed through **one randomly assigned codec** (full encode then decode, so it picks up that codec's real compression artifacts), and written as 16-bit mono WAV. The per-file codec assignment is seeded, stratified across source formats, and kept **private** (like the labels). The two tracks use **independent permutations**, so their file orders do not line up with each other or with the studio set.
+
+PESQ is measured against the clean track-rate reference (higher is better); Whisper-WER is the word-error rate of the codec'd clip versus the clean-reference transcript (lower means intelligibility is preserved).
+
+### Narrowband track: 8 kHz (2G/3G)
+
+Codec pool: landline (G.711 μ-law / A-law), 2G/3G mobile (GSM-FR, AMR-NB), and VoIP (G.729). Band-pass 300 to 3400 Hz. 4,524 clips, ~6 hours, mean 4.80 s.
+
+| Codec | Bitrate | Files | PESQ-NB (mean) ↑ | Whisper-WER (mean) ↓ |
+|-------|--------:|------:|-----------------:|---------------------:|
+| G.711 μ-law | 64 kbit/s | 905 | 4.44 | 5.3% |
+| G.711 A-law | 64 kbit/s | 903 | 4.44 | 4.4% |
+| AMR-NB | 12.2 kbit/s | 904 | 4.07 | 8.4% |
+| G.729 | 8 kbit/s | 906 | 3.71 | 6.4% |
+| GSM-FR | 13 kbit/s | 906 | 3.51 | 11.0% |
+
+### Wideband track: 16 kHz (4G/5G)
+
+Codec pool: the 4G/5G mobile wideband codecs EVS-WB and AMR-WB (G.722.2), each at two bitrates. Band-pass 50 to 7000 Hz. 4,524 clips, ~6 hours, mean 4.80 s.
+
+| Codec | Bitrate | Files | PESQ-WB (mean) ↑ | Whisper-WER (mean) ↓ |
+|-------|--------:|------:|-----------------:|---------------------:|
+| EVS-WB | 24.4 kbit/s | 1129 | 4.05 | 2.0% |
+| AMR-WB | 23.85 kbit/s | 1133 | 3.72 | 3.2% |
+| EVS-WB | 13.2 kbit/s | 1130 | 3.69 | 4.0% |
+| AMR-WB | 12.65 kbit/s | 1132 | 3.27 | 4.0% |
+
+In both tracks the PESQ ordering is the expected one (higher bitrate and newer codecs score higher, and EVS edges AMR-WB at matched rates). Median word-error rates are ~0%, confirming the clips remain intelligible after degradation, so the detection task stays fair.
+
+### Submit your results
+
+Run your detector over a track's folder (filenames are `0.wav`, `1.wav`, ...) and submit a `predictions.csv` as described in [Submission Format](#submission-format) below. Each track is scored against its own private gold standard.
+
+---
+
 ## How to Reproduce
 
 ### 1. Clone and install
@@ -218,7 +260,7 @@ We deliberately do **not** report Equal Error Rate (EER), since EER assumes an o
 
 ## Submission Format
 
-Produce a CSV file `predictions.csv` with three columns — `filename`, `label`, and `latency_ms` (mean per-file inference time in milliseconds):
+Produce a CSV file `predictions.csv` with three columns, `filename`, `label`, and `latency_ms` (mean per-file inference time in milliseconds):
 
 ```csv
 filename,label,latency_ms
@@ -228,7 +270,16 @@ filename,label,latency_ms
 ...
 ```
 
-Labels must be exactly `real` or `fake` (lowercase). `latency_ms` lets us report the **Lat(ms)** and **RTF** columns on the leaderboard; if you cannot measure it, leave the column blank. Email your `predictions.csv` to **hello@podonos.com** for scoring against the private gold standard.
+Labels must be exactly `real` or `fake` (lowercase). `latency_ms` lets us report the **Lat(ms)** and **RTF** columns on the leaderboard; if you cannot measure it, leave the column blank.
+
+Submit one CSV per dataset:
+- **Studio track:** run over `dataset/`; filenames keep their original extension (e.g. `0.flac`).
+- **Narrowband telephony track (8 kHz):** run over `dataset_8k_nb/`; filenames are `0.wav`, `1.wav`, ...
+- **Wideband telephony track (16 kHz):** run over `dataset_16k_wb/`; filenames are `0.wav`, `1.wav`, ...
+
+The three datasets share filenames (`0.wav`...) but are **independently shuffled**, so a prediction file for one track will not score on another.
+
+Email your `predictions.csv` to **hello@podonos.com** for scoring against the private gold standard.
 
 ---
 
