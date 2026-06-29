@@ -70,13 +70,22 @@ Files are sequentially numbered starting from `0`. The format extension indicate
 - **Total audio**: ~362 minutes (~6 hours)
 - **Sample rates**: Variable (resample to 16 kHz mono for open-source detectors)
 
+## Telephony Tracks
+
+Beyond the studio-quality set, two derived datasets degrade the same 4,524 clips to real-world phone and mobile channel conditions. Both are released as **audio only**; the codec pipeline and the per-file codec assignment are kept private, like the labels.
+
+- **Narrowband, 8 kHz** (`dataset_8k_nb/`): 2G/3G telephony. Each clip is resampled to 8 kHz, band-pass filtered to 300 to 3400 Hz, and passed through one randomly assigned narrowband codec: G.711 μ-law / A-law, GSM-FR, AMR-NB, or G.729.
+- **Wideband, 16 kHz** (`dataset_16k_wb/`): 4G/5G mobile. Each clip is resampled to 16 kHz, band-pass filtered to 50 to 7000 Hz, and passed through one randomly assigned wideband codec: EVS-WB or AMR-WB (G.722.2), at two bitrates each.
+
+Each track keeps the 50/50 class balance and the same hidden labels as the studio set, but is **independently shuffled**, so file orders do not align with each other or with the studio set. Each track has its own private ground truth.
+
 ## Gold Standard Labels
 
 The ground-truth labels (`labels_speech.csv`) are **NOT included in this public release** to prevent overfitting and to maintain the benchmark's role as an independent evaluation set. Email your `predictions.csv` to **hello@podonos.com** to be scored against the private gold standard.
 
 ## Submission Format
 
-Produce a `predictions.csv` with three columns — `filename`, `label`, and `latency_ms` (mean per-file inference time in milliseconds):
+Produce a `predictions.csv` with three columns: `filename`, `label`, and `latency_ms` (mean per-file inference time in milliseconds):
 
 ```csv
 filename,label,latency_ms
