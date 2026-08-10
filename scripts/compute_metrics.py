@@ -11,8 +11,14 @@ LABELS_CSV = os.path.join(os.path.dirname(__file__), "..", "dataset", "labels_sp
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "..", "results")
 
 ALL_MODELS = [
+    # Open-source baselines (legacy, ASVspoof 2019 LA era)
     "aasist", "rawnet2", "lcnn", "wav2vec2",
-    "hive", "resemble", "reality_defender", "aurigin",
+    # Open-source baselines (modern, 2024+ training)
+    "aasist_asvspoof5", "ast_asvspoof5", "ast_voxcelebspoof",
+    "wav2vec2_garystafford", "melodymachine_v2",
+    # Commercial APIs
+    "resemble", "resemble_detect_world", "hive", "reality_defender", "aurigin",
+    "pindrop", "whispeak", "corsound",
 ]
 
 

@@ -12,26 +12,27 @@ A neutral, public benchmark for evaluating audio deepfake detection systems on a
 
 ![Leaderboard — Accuracy](images/leaderboard_accuracy.png)
 
-**16 systems** evaluated: 7 commercial APIs (**bold**) and 9 open-source baselines, sorted by accuracy. Company and model names link to their source.
+**17 systems** evaluated: 8 commercial APIs (**bold**) and 9 open-source baselines, sorted by accuracy. Company and model names link to their source.
 
 | # | System | N | Rej% | Acc% | F1 | FPR% | FNR% | Lat(ms) | RTF |
 |---|--------|---|------|------|-----|------|------|---------|-----|
-| 1 | **[Resemble AI](https://www.resemble.ai)** | 4524 | 0.0% | **98.05%** | 0.981 | 2.5% | 1.4% | 1,164 | 0.40 |
-| 2 | **[Whispeak](https://whispeak.io)** | 4524 | 0.0% | 97.70% | 0.977 | 2.9% | 1.7% | 1,052 | 0.39 |
-| 3 | **[Aurigin AI](https://aurigin.ai)** | 4524 | 0.0% | 96.75% | 0.967 | 1.5% | 5.0% | 980 | 0.33 |
-| 4 | **[Pindrop](https://www.pindrop.com)** | 4524 | 0.0% | 95.05% | 0.951 | 6.2% | 3.7% | 282 | 0.076 |
-| 5 | **[Corsound AI](https://www.corsound.ai)** | 3875 | 14.3% | 87.79% | 0.865 | 1.0% | 23.1% | 180 | 0.035 |
-| 6 | **[Hive](https://thehive.ai)** | 4524 | 0.0% | 83.53% | 0.808 | 2.4% | 30.5% | 881 | 0.34 |
-| 7 | **[Reality Defender](https://www.realitydefender.com)** | 3745 | 17.2% | 71.27% | 0.770 | 53.7% | 3.6% | 5,718 | 1.52 |
-| 8 | [Wav2Vec2 (2019 LA)](https://huggingface.co/Gustking/wav2vec2-large-xlsr-deepfake-audio-classification) | 4524 | 0.0% | 62.89% | 0.514 | 13.4% | 60.8% | 622 | 0.14 |
-| 9 | [AST (ASVspoof 5)](https://huggingface.co/MattyB95/AST-ASVspoof5-Synthetic-Voice-Detection) | 4524 | 0.0% | 56.83% | 0.657 | 69.0% | 17.4% | 5 | 0.0017 |
-| 10 | [Wav2Vec2 (2024 mix)](https://huggingface.co/garystafford/wav2vec2-deepfake-voice-detector) | 4524 | 0.0% | 55.55% | 0.499 | 33.1% | 55.8% | 219 | 0.056 |
-| 11 | [Deepfake-V2 (W2V2-base)](https://huggingface.co/MelodyMachine/Deepfake-audio-detection-V2) | 4524 | 0.0% | 53.03% | 0.162 | 3.1% | 90.9% | 94 | 0.027 |
-| 12 | [AST (VoxCelebSpoof)](https://huggingface.co/MattyB95/AST-VoxCelebSpoof-Synthetic-Voice-Detection) | 4524 | 0.0% | 50.99% | 0.048 | 0.5% | 97.5% | 8 | 0.0030 |
-| 13 | [RawNet2 (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_RawNet2) | 4524 | 0.0% | 50.66% | 0.430 | 35.9% | 62.7% | 94 | 0.035 |
-| 14 | [LCNN-LFCC (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_LFCC-LCNN) | 4524 | 0.0% | 50.00% | 0.667 | 100.0% | 0.0% | 23 | 0.0056 |
-| 15 | [AASIST (2019 LA)](https://github.com/clovaai/aasist) | 4524 | 0.0% | 48.17% | 0.486 | 52.6% | 51.1% | 322 | 0.11 |
-| 16 | [AASIST3 (ASVspoof 5)](https://huggingface.co/lab260/AASIST3) | 4524 | 0.0% | 47.63% | 0.029 | 6.3% | 98.4% | 363 | 0.13 |
+| 1 | **[Resemble DETECT-World](https://www.resemble.ai)** | 4524 | 0.0% | **99.47%** | 0.995 | 0.7% | 0.4% | 399 | 0.12 |
+| 2 | **[Resemble AI](https://www.resemble.ai)** | 4524 | 0.0% | 98.05% | 0.981 | 2.5% | 1.4% | 1,164 | 0.40 |
+| 3 | **[Whispeak](https://whispeak.io)** | 4524 | 0.0% | 97.70% | 0.977 | 2.9% | 1.7% | 1,052 | 0.39 |
+| 4 | **[Aurigin AI](https://aurigin.ai)** | 4524 | 0.0% | 96.75% | 0.967 | 1.5% | 5.0% | 980 | 0.33 |
+| 5 | **[Pindrop](https://www.pindrop.com)** | 4524 | 0.0% | 95.05% | 0.951 | 6.2% | 3.7% | 282 | 0.076 |
+| 6 | **[Corsound AI](https://www.corsound.ai)** | 3875 | 14.3% | 87.79% | 0.865 | 1.0% | 23.1% | 180 | 0.035 |
+| 7 | **[Hive](https://thehive.ai)** | 4524 | 0.0% | 83.53% | 0.808 | 2.4% | 30.5% | 881 | 0.34 |
+| 8 | **[Reality Defender](https://www.realitydefender.com)** | 3745 | 17.2% | 71.27% | 0.770 | 53.7% | 3.6% | 5,718 | 1.52 |
+| 9 | [Wav2Vec2 (2019 LA)](https://huggingface.co/Gustking/wav2vec2-large-xlsr-deepfake-audio-classification) | 4524 | 0.0% | 62.89% | 0.514 | 13.4% | 60.8% | 622 | 0.14 |
+| 10 | [AST (ASVspoof 5)](https://huggingface.co/MattyB95/AST-ASVspoof5-Synthetic-Voice-Detection) | 4524 | 0.0% | 56.83% | 0.657 | 69.0% | 17.4% | 5 | 0.0017 |
+| 11 | [Wav2Vec2 (2024 mix)](https://huggingface.co/garystafford/wav2vec2-deepfake-voice-detector) | 4524 | 0.0% | 55.55% | 0.499 | 33.1% | 55.8% | 219 | 0.056 |
+| 12 | [Deepfake-V2 (W2V2-base)](https://huggingface.co/MelodyMachine/Deepfake-audio-detection-V2) | 4524 | 0.0% | 53.03% | 0.162 | 3.1% | 90.9% | 94 | 0.027 |
+| 13 | [AST (VoxCelebSpoof)](https://huggingface.co/MattyB95/AST-VoxCelebSpoof-Synthetic-Voice-Detection) | 4524 | 0.0% | 50.99% | 0.048 | 0.5% | 97.5% | 8 | 0.0030 |
+| 14 | [RawNet2 (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_RawNet2) | 4524 | 0.0% | 50.66% | 0.430 | 35.9% | 62.7% | 94 | 0.035 |
+| 15 | [LCNN-LFCC (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_LFCC-LCNN) | 4524 | 0.0% | 50.00% | 0.667 | 100.0% | 0.0% | 23 | 0.0056 |
+| 16 | [AASIST (2019 LA)](https://github.com/clovaai/aasist) | 4524 | 0.0% | 48.17% | 0.486 | 52.6% | 51.1% | 322 | 0.11 |
+| 17 | [AASIST3 (ASVspoof 5)](https://huggingface.co/lab260/AASIST3) | 4524 | 0.0% | 47.63% | 0.029 | 6.3% | 98.4% | 363 | 0.13 |
 
 **Legend**:
 - **N** — number of evaluated audio files
@@ -44,10 +45,11 @@ A neutral, public benchmark for evaluating audio deepfake detection systems on a
 
 ### Observations
 
-**Top tier — four commercial APIs clear 95 %:**
+**Top tier — five commercial APIs clear 95 %:**
 
-Four production APIs separate themselves from the rest, all above 95 % accuracy with F1 ≥ 0.95. The choice between them comes down to which error you can least afford and how fast you need an answer.
+Five production APIs separate themselves from the rest, all above 95 % accuracy with F1 ≥ 0.95. The choice between them comes down to which error you can least afford and how fast you need an answer.
 
+- **Resemble DETECT-World** — **99.47 % accuracy**, F1 **0.995**, with **both** error rates under 1 % (FPR 0.7 %, FNR 0.4 %). The first system on this benchmark that does not force an error trade-off: it misses ~1 in 250 deepfakes *and* false-flags ~1 in 150 real clips, roughly a 3–4× reduction on both axes versus the next-best system. It is also ~3× faster than the previous Resemble model (399 ms/file, RTF 0.12) and rejects nothing. Accuracy stays within 99.2–99.7 % on every one of the six container formats, so there is no format-specific weak spot. On this dataset it is the default pick regardless of which error you care about.
 - **Resemble AI** — **98.05 % accuracy**, F1 **0.981**, **FNR 1.4 %**. Best at *catching fakes*: only ~1 in 70 deepfakes slips past it (FPR 2.5 %). Choose Resemble when **missing a deepfake is worse than a false alarm** — fraud / KYC voice verification, content provenance, anywhere letting a synthetic voice through is the high-cost outcome.
 - **Whispeak** — **97.70 % accuracy**, F1 **0.977**, a balanced 2.9 % FPR / 1.7 % FNR. The most symmetric error profile in the top tier — strong on both real and fake audio without leaning either way.
 - **Aurigin AI** — **96.75 % accuracy**, F1 **0.967**, **FPR 1.5 %** (the lowest of any system that also catches fakes). Best at *protecting real audio*: only ~1 in 65 genuine clips is wrongly flagged (FNR 5.0 %). Choose Aurigin when **false alarms on real audio are worse than missed fakes** — content moderation at scale, automated takedowns, journalist verification.
@@ -68,7 +70,7 @@ Four production APIs separate themselves from the rest, all above 95 % accuracy 
 
 **Latency / RTF:**
 - Reality Defender's **RTF > 1.0** means it is slower than real-time — a 5-second clip takes ~7.6 s to process. Not viable for streaming.
-- Every other detector runs faster than real-time (RTF < 1). Among the accurate commercial systems, **Pindrop is the fastest (RTF 0.076)**; Resemble, Whispeak, Aurigin, and Hive land around RTF 0.33–0.40.
+- Every other detector runs faster than real-time (RTF < 1). Among the accurate commercial systems, **Pindrop is the fastest (RTF 0.076)**, with **Resemble DETECT-World** next at RTF 0.12 — and unlike Pindrop it gives up no accuracy to get there. Resemble AI, Whispeak, Aurigin, and Hive land around RTF 0.33–0.40.
 - The open-source models run on local hardware (no network round-trip), so their low RTF reflects pure compute cost — but at this accuracy that speed buys little.
 
 ### Error Profile
@@ -207,6 +209,7 @@ Outputs the per-model breakdown including per-format accuracy and the leaderboar
 
 | Vendor | Product / Model | Docs / Product page |
 |--------|-----------------|---------------------|
+| [**Resemble AI**](https://www.resemble.ai) | DETECT-World | https://docs.resemble.ai/detect |
 | [**Resemble AI**](https://www.resemble.ai) | DETECT-3B Omni | https://docs.resemble.ai/detect |
 | [**Whispeak**](https://whispeak.io) | Voice Biometric Authentication (anti-spoofing) | https://whispeak.io/voice-authentication/ |
 | [**Aurigin AI**](https://aurigin.ai) | Apollo deepfake detection | https://docs.aurigin.ai |
