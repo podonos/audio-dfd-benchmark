@@ -18,7 +18,7 @@ ALL_MODELS = [
     "wav2vec2_garystafford", "melodymachine_v2",
     # Commercial APIs
     "resemble", "resemble_detect_world", "hive", "reality_defender", "aurigin",
-    "pindrop", "whispeak", "corsound",
+    "pindrop", "whispeak", "corsound", "pella_research",
 ]
 
 
