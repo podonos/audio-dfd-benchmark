@@ -88,10 +88,9 @@ The 95.82 % figure was produced by the public `pellav2` checkpoint, confirmed by
 - **Coverage is not uniform.** Corsound rejects 14.3 % of files and Reality Defender 17.2 %, mostly clips under ~1.5 s, so those two rows are scored on easier subsets than the rest.
 - **NII Synthetiq Audio** is licensed commercially by the Yamagishi Lab at NII rather than sold as a public API; its latency was measured by the lab on an H100.
 
-Three caveats change how a row should be read:
+Two caveats change how a row should be read:
 
 - **Pella Research scores a 4-second centre crop**, not the whole clip, so its latency is flat with duration and its RTF is not comparable to systems that read the full file. The AASIST and RawNet2 runners here crop the same way.
-- **deetech.ai's submission assigns exactly 2,262 real and 2,262 fake**, matching the published class balance. That forces FPR and FNR to be equal, so its error split reflects the chosen operating point rather than an independent property of the detector.
 - **deetech.ai and Aurigin AI submitted no clip durations**, so neither has an RTF and both are absent from the scatter plot.
 
 **Open-source baselines: none of the nine legacy checkpoints generalize to modern TTS.** All nine sit in the 47.6–62.9 % band regardless of training era; ASVspoof 2019 LA and the newer ASVspoof 5 / VoxCelebSpoof models collapse alike on current voice cloning. Several are degenerate and call almost everything real: AST (VoxCelebSpoof), AASIST3 and Deepfake-V2. LCNN-LFCC emits a single class under our runner's fixed decision threshold, which sits outside the score range the checkpoint actually produces, so its 50.00 % reflects our harness rather than the model.
