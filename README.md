@@ -12,28 +12,33 @@ A neutral, public benchmark for evaluating audio deepfake detection systems on a
 
 ![Leaderboard: Accuracy](images/leaderboard_accuracy.png)
 
-**18 systems** published: 9 commercial entries (**bold**) from 8 vendors, since Resemble appears twice and 9 open-source baselines, sorted by accuracy. **Pella Research** is a commercial provider that also open-sourced its model (MIT), so it appears among the commercial entries while its weights stay downloadable.
+**23 systems** published: 13 commercial entries (**bold**) from 12 vendors, since Resemble appears twice, and 10 systems whose weights you can download, sorted by accuracy. **Pella Research** is a commercial provider that also open-sourced its model (MIT), so it appears among the commercial entries while its weights stay downloadable. **NII** appears twice for two separate systems: Synthetiq Audio is licensed commercially, AntiDeepfake is an open-weights research release.
 
 | # | System | N | Rej% | Acc% | F1 | FPR% | FNR% | Lat(ms) | RTF |
 |---|--------|---|------|------|-----|------|------|---------|-----|
-| 1 | **[Resemble DETECT-World](https://www.resemble.ai)** | 4524 | 0.0% | **99.47%** | 0.995 | 0.7% | 0.4% | 399 | 0.12 |
-| 2 | **[Resemble AI](https://www.resemble.ai)** ‡ | 4524 | 0.0% | 98.05% | 0.981 | 2.5% | 1.4% | 1,164 | 0.40 |
-| 3 | **[Whispeak](https://whispeak.io)** | 4524 | 0.0% | 97.70% | 0.977 | 2.9% | 1.7% | 1,052 | 0.39 |
-| 4 | **[Aurigin AI](https://aurigin.ai)** ‡ | 4524 | 0.0% | 96.75% | 0.967 | 1.5% | 5.0% | 980 | 0.33 |
-| 5 | **[Pella Research](https://pellaresearch.com)** † | 4524 | 0.0% | 95.82% | 0.959 | 5.5% | 2.8% | 57 | 0.021 |
-| 6 | **[Pindrop](https://www.pindrop.com)** | 4524 | 0.0% | 95.05% | 0.951 | 6.2% | 3.7% | 282 | 0.076 |
-| 7 | **[Corsound AI](https://www.corsound.ai)** | 3875 | 14.3% | 87.79% | 0.865 | 1.0% | 23.1% | 180 | 0.035 |
-| 8 | **[Hive](https://thehive.ai)** ‡ | 4524 | 0.0% | 83.53% | 0.808 | 2.4% | 30.5% | 881 | 0.34 |
-| 9 | **[Reality Defender](https://www.realitydefender.com)** ‡ | 3745 | 17.2% | 71.27% | 0.770 | 53.7% | 3.6% | 5,718 | 1.52 |
-| 10 | [Wav2Vec2 (2019 LA)](https://huggingface.co/Gustking/wav2vec2-large-xlsr-deepfake-audio-classification) | 4524 | 0.0% | 62.89% | 0.514 | 13.4% | 60.8% | 622 | 0.14 |
-| 11 | [AST (ASVspoof 5)](https://huggingface.co/MattyB95/AST-ASVspoof5-Synthetic-Voice-Detection) | 4524 | 0.0% | 56.83% | 0.657 | 69.0% | 17.4% | 5 | 0.0017 |
-| 12 | [Wav2Vec2 (2024 mix)](https://huggingface.co/garystafford/wav2vec2-deepfake-voice-detector) | 4524 | 0.0% | 55.55% | 0.499 | 33.1% | 55.8% | 219 | 0.056 |
-| 13 | [Deepfake-V2 (W2V2-base)](https://huggingface.co/MelodyMachine/Deepfake-audio-detection-V2) | 4524 | 0.0% | 53.03% | 0.162 | 3.1% | 90.9% | 94 | 0.027 |
-| 14 | [AST (VoxCelebSpoof)](https://huggingface.co/MattyB95/AST-VoxCelebSpoof-Synthetic-Voice-Detection) | 4524 | 0.0% | 50.99% | 0.048 | 0.5% | 97.5% | 8 | 0.0030 |
-| 15 | [RawNet2 (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_RawNet2) | 4524 | 0.0% | 50.66% | 0.430 | 35.9% | 62.7% | 94 | 0.035 |
-| 16 | [LCNN-LFCC (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_LFCC-LCNN) | 4524 | 0.0% | 50.00% | 0.667 | 100.0% | 0.0% | 23 | 0.0056 |
-| 17 | [AASIST (2019 LA)](https://github.com/clovaai/aasist) | 4524 | 0.0% | 48.17% | 0.486 | 52.6% | 51.1% | 322 | 0.11 |
-| 18 | [AASIST3 (ASVspoof 5)](https://huggingface.co/lab260/AASIST3) | 4524 | 0.0% | 47.63% | 0.029 | 6.3% | 98.4% | 363 | 0.13 |
+| 1 | **[deetech.ai](https://deetech.ai)** | 4524 | 0.0% | **99.56%** | 0.996 | 0.4% | 0.4% | 50 | n/a |
+| 2 | **[Resemble DETECT-World](https://www.resemble.ai)** | 4524 | 0.0% | 99.47% | 0.995 | 0.7% | 0.4% | 399 | 0.12 |
+| 3 | **[Fennura](https://fennura.ai)** | 4524 | 0.0% | 98.63% | 0.986 | 1.2% | 1.5% | 553 | 0.14 |
+| 4 | **[Aurigin AI](https://aurigin.ai)** | 4524 | 0.0% | 98.21% | 0.982 | 2.4% | 1.1% | n/a | n/a |
+| 5 | **[Resemble AI](https://www.resemble.ai)** ‡ | 4524 | 0.0% | 98.05% | 0.981 | 2.5% | 1.4% | 1,164 | 0.40 |
+| 6 | **[Whispeak](https://whispeak.io)** | 4524 | 0.0% | 97.70% | 0.977 | 2.9% | 1.7% | 1,052 | 0.39 |
+| 7 | **[Pella Research](https://pellaresearch.com)** † | 4524 | 0.0% | 95.82% | 0.959 | 5.5% | 2.8% | 57 | 0.021 |
+| 8 | **[Pindrop](https://www.pindrop.com)** | 4524 | 0.0% | 95.05% | 0.951 | 6.2% | 3.7% | 282 | 0.076 |
+| 9 | **[DetectifAI](https://detectif.ai)** | 4524 | 0.0% | 94.47% | 0.946 | 8.4% | 2.7% | 24 | 0.0084 |
+| 10 | **[NII Synthetiq Audio v0.8-Beta](https://yamagishilab.jp)** | 4524 | 0.0% | 89.57% | 0.892 | 6.6% | 14.2% | 91 | 0.024 |
+| 11 | **[Corsound AI](https://www.corsound.ai)** | 3875 | 14.3% | 87.79% | 0.865 | 1.0% | 23.1% | 180 | 0.035 |
+| 12 | **[Hive](https://thehive.ai)** ‡ | 4524 | 0.0% | 83.53% | 0.808 | 2.4% | 30.5% | 881 | 0.34 |
+| 13 | **[Reality Defender](https://www.realitydefender.com)** ‡ | 3745 | 17.2% | 71.27% | 0.770 | 53.7% | 3.6% | 5,718 | 1.52 |
+| 14 | [NII AntiDeepfake](https://huggingface.co/nii-yamagishilab/xls-r-2b-anti-deepfake) † | 4524 | 0.0% | 70.47% | 0.584 | 0.4% | 58.6% | 91 | 0.024 |
+| 15 | [Wav2Vec2 (2019 LA)](https://huggingface.co/Gustking/wav2vec2-large-xlsr-deepfake-audio-classification) | 4524 | 0.0% | 62.89% | 0.514 | 13.4% | 60.8% | 622 | 0.14 |
+| 16 | [AST (ASVspoof 5)](https://huggingface.co/MattyB95/AST-ASVspoof5-Synthetic-Voice-Detection) | 4524 | 0.0% | 56.83% | 0.657 | 69.0% | 17.4% | 5 | 0.0017 |
+| 17 | [Wav2Vec2 (2024 mix)](https://huggingface.co/garystafford/wav2vec2-deepfake-voice-detector) | 4524 | 0.0% | 55.55% | 0.499 | 33.1% | 55.8% | 219 | 0.056 |
+| 18 | [Deepfake-V2 (W2V2-base)](https://huggingface.co/MelodyMachine/Deepfake-audio-detection-V2) | 4524 | 0.0% | 53.03% | 0.162 | 3.1% | 90.9% | 94 | 0.027 |
+| 19 | [AST (VoxCelebSpoof)](https://huggingface.co/MattyB95/AST-VoxCelebSpoof-Synthetic-Voice-Detection) | 4524 | 0.0% | 50.99% | 0.048 | 0.5% | 97.5% | 8 | 0.0030 |
+| 20 | [RawNet2 (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_RawNet2) | 4524 | 0.0% | 50.66% | 0.430 | 35.9% | 62.7% | 94 | 0.035 |
+| 21 | [LCNN-LFCC (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_LFCC-LCNN) | 4524 | 0.0% | 50.00% | 0.667 | 100.0% | 0.0% | 23 | 0.0056 |
+| 22 | [AASIST (2019 LA)](https://github.com/clovaai/aasist) | 4524 | 0.0% | 48.17% | 0.486 | 52.6% | 51.1% | 322 | 0.11 |
+| 23 | [AASIST3 (ASVspoof 5)](https://huggingface.co/lab260/AASIST3) | 4524 | 0.0% | 47.63% | 0.029 | 6.3% | 98.4% | 363 | 0.13 |
 
 **Legend**:
 - **N**: number of evaluated audio files
@@ -52,32 +57,38 @@ A neutral, public benchmark for evaluating audio deepfake detection systems on a
 
 ### Open-weights leaderboard
 
-Ranking everything together buries one result: **of the 10 systems here whose weights you can download and run, Pella Research is far and away the best**, and the only one near production quality.
+Ranking everything together buries one result: **of the 11 systems here whose weights you can download and run, Pella Research is far and away the best**, and the only one near production quality.
 
 | # | Open-weights system | Acc% | F1 | License |
 |---|---------------------|------|-----|---------|
 | 1 | **[Pella Research: pellav2](https://huggingface.co/Sadanie/pellav2-audio-deepfake-detector)** | **95.82%** | 0.959 | MIT |
-| 2 | [Wav2Vec2 (2019 LA)](https://huggingface.co/Gustking/wav2vec2-large-xlsr-deepfake-audio-classification) | 62.89% | 0.514 | Apache-2.0 |
-| 3 | [AST (ASVspoof 5)](https://huggingface.co/MattyB95/AST-ASVspoof5-Synthetic-Voice-Detection) | 56.83% | 0.657 | BSD-3-Clause |
-| 4 | [Wav2Vec2 (2024 mix)](https://huggingface.co/garystafford/wav2vec2-deepfake-voice-detector) | 55.55% | 0.499 | Apache-2.0 |
-| 5 | [Deepfake-V2 (W2V2-base)](https://huggingface.co/MelodyMachine/Deepfake-audio-detection-V2) | 53.03% | 0.162 | Apache-2.0 |
-| 6 | [AST (VoxCelebSpoof)](https://huggingface.co/MattyB95/AST-VoxCelebSpoof-Synthetic-Voice-Detection) | 50.99% | 0.048 | MIT |
-| 7 | [RawNet2 (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_RawNet2) | 50.66% | 0.430 | MIT |
-| 8 | [LCNN-LFCC (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_LFCC-LCNN) | 50.00% | 0.667 | MIT |
-| 9 | [AASIST (2019 LA)](https://github.com/clovaai/aasist) | 48.17% | 0.486 | MIT |
-| 10 | [AASIST3 (ASVspoof 5)](https://huggingface.co/lab260/AASIST3) | 47.63% | 0.029 | **CC BY-NC-4.0** (non-commercial) |
+| 2 | [NII AntiDeepfake](https://huggingface.co/nii-yamagishilab/xls-r-2b-anti-deepfake) | 70.47% | 0.584 | **CC BY-NC-SA-4.0** (non-commercial) |
+| 3 | [Wav2Vec2 (2019 LA)](https://huggingface.co/Gustking/wav2vec2-large-xlsr-deepfake-audio-classification) | 62.89% | 0.514 | Apache-2.0 |
+| 4 | [AST (ASVspoof 5)](https://huggingface.co/MattyB95/AST-ASVspoof5-Synthetic-Voice-Detection) | 56.83% | 0.657 | BSD-3-Clause |
+| 5 | [Wav2Vec2 (2024 mix)](https://huggingface.co/garystafford/wav2vec2-deepfake-voice-detector) | 55.55% | 0.499 | Apache-2.0 |
+| 6 | [Deepfake-V2 (W2V2-base)](https://huggingface.co/MelodyMachine/Deepfake-audio-detection-V2) | 53.03% | 0.162 | Apache-2.0 |
+| 7 | [AST (VoxCelebSpoof)](https://huggingface.co/MattyB95/AST-VoxCelebSpoof-Synthetic-Voice-Detection) | 50.99% | 0.048 | MIT |
+| 8 | [RawNet2 (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_RawNet2) | 50.66% | 0.430 | MIT |
+| 9 | [LCNN-LFCC (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_LFCC-LCNN) | 50.00% | 0.667 | MIT |
+| 10 | [AASIST (2019 LA)](https://github.com/clovaai/aasist) | 48.17% | 0.486 | MIT |
+| 11 | [AASIST3 (ASVspoof 5)](https://huggingface.co/lab260/AASIST3) | 47.63% | 0.029 | **CC BY-NC-4.0** (non-commercial) |
 
-The 95.82 % figure was produced by the public `pellav2` checkpoint, confirmed by the vendor. **AASIST3 is non-commercial (CC BY-NC-4.0)**; the rest permit commercial use.
+The 95.82 % figure was produced by the public `pellav2` checkpoint, confirmed by the vendor. **Two are non-commercial: NII AntiDeepfake (CC BY-NC-SA-4.0) and AASIST3 (CC BY-NC-4.0)**; the rest permit commercial use.
 
-**Pella Research leads the next open model by 32.9 percentage points** and is the only downloadable system to clear the 95 % production bar. None of the systems above it publishes downloadable weights. So if you need a model you can inspect or audit yourself, the practical choice set is one deep, and the gap to the next open model is not incremental.
+**Pella Research leads the next open model by 25.4 percentage points** and is the only downloadable system to clear the 95 % production bar. None of the systems above it publishes downloadable weights. So if you need a model you can inspect or audit yourself, the practical choice set is one deep, and the gap to the next open model is not incremental.
 
 Pella also sells a hosted API; the open weights are in addition, not instead.
 
 ### Observations
 
-**Commercial systems.** Six clear 95 % accuracy. Pick by which error costs you more.
+**Commercial systems.** Eight clear 95 % accuracy. Pick by which error costs you more.
 
-- **Resemble DETECT-World**: 99.47 %, F1 0.995. The only system with **both** error rates under 1 % (FPR 0.7 %, FNR 0.4 %): it misses ~1 in 250 fakes and false-flags ~1 in 150 real clips, roughly 3–4× better than the next system on both. 99.2–99.7 % on every format, no weak spot. The default pick.
+- **deetech.ai**: 99.56 %, F1 0.996, the highest accuracy on the board, with FPR and FNR both at 0.4 % (20 misclassified clips out of 4,524). Its `predictions.csv` assigns exactly 2,262 real and 2,262 fake, matching the published 50/50 class balance; that calibration forces FPR and FNR to be equal, so its error split reflects the chosen operating point rather than an independent property of the detector. It reported per-file latency but no clip durations, so it has no RTF.
+- **Resemble DETECT-World**: 99.47 %, F1 0.995. One of two systems with **both** error rates under 1 % (FPR 0.7 %, FNR 0.4 %): it misses ~1 in 250 fakes and false-flags ~1 in 150 real clips. 99.2–99.7 % on every format, no weak spot, and unlike the system above it, its threshold was set without reference to the class balance.
+- **Fennura**: 98.63 %, F1 0.986, balanced 1.2 % FPR / 1.5 % FNR. Generated entirely on a notebook CPU with no GPU at inference time, which makes it the strongest result here from an on-device target.
+- **Aurigin AI**: 98.21 %, F1 0.982, FNR 1.1 % against FPR 2.4 %. This is an updated model the vendor submitted in September; it did not include latency figures, so it has no Lat/RTF.
+- **DetectifAI**: 94.47 %, F1 0.946, and the lowest reported per-file latency on the board (~24 ms). Errors lean strongly to false positives (FPR 8.4 % / FNR 2.7 %).
+- **NII Synthetiq Audio v0.8-Beta**: 89.57 %, F1 0.892, FPR 6.6 % / FNR 14.2 %. Licensed commercially to Japanese companies by the Yamagishi Lab at the National Institute of Informatics; latency measured by the lab on an NVIDIA H100.
 - **Resemble AI**: 98.05 %, F1 0.981. FNR 1.4 %, FPR 2.5 %. The previous generation; DETECT-World beats it on both error types at a third of the latency.
 - **Whispeak**: 97.70 %, F1 0.977. Balanced 2.9 % FPR / 1.7 % FNR, with no strong lean either way.
 - **Aurigin AI**: 96.75 %, F1 0.967. **FPR 1.5 %**, behind only DETECT-World among systems that keep FNR under 10 %. Choose it when **false alarms cost more than missed fakes**: moderation at scale, automated takedowns.
@@ -87,15 +98,16 @@ Pella also sells a hosted API; the open weights are in addition, not instead.
 - **Hive**: 83.5 %, FPR 2.4 %, FNR 30.5 %. Same conservative shape as Corsound.
 - **Reality Defender**: 71.3 % with **FPR 53.7 %**, false-flagging over half of all real audio. **Rejects 17.2 % of files**, mostly clips under ~1.5 s, and is slower than real-time.
 
-**Open-source baselines: none of these nine generalize to modern TTS.**
+**Open-source baselines: none of the nine legacy checkpoints generalize to modern TTS.**
 - All nine land in the **47.6–62.9 %** band, near random. This holds regardless of training era: **ASVspoof 2019 LA** and newer **ASVspoof 5 / VoxCelebSpoof** models both collapse on this distribution of current voice-cloning systems.
 - **Wav2Vec2 (2019 LA)** is the strongest of the nine at 62.9 %.
+- Two open-weights models sit above that band and are the exceptions to the paragraph: **NII AntiDeepfake** at 70.5 % and **pellav2** at 95.8 %. AntiDeepfake is the most conservative system on the whole board, with an FPR of **0.4 %** against an FNR of **58.6 %**: it essentially never false-flags real audio and misses close to 6 fakes in 10. That is a deliberate operating point, not a failure to train, and it is the right shape for a screening pass where a false accusation is the expensive error.
 - Several are **degenerate**, collapsing to one class: **AST (VoxCelebSpoof)** (97.5 % FNR), **AASIST3** (98.4 % FNR) and **Deepfake-V2** (90.9 % FNR) call almost everything real. **LCNN-LFCC** emits a single class under our runner's fixed decision threshold, which sits outside the score range the checkpoint actually produces, so its 50.00 % reflects our harness rather than the model. Their accuracy is an artifact of the 50/50 balance, not skill.
-- **Open weights are not the problem; stale training data is.** These nine were trained on ASVspoof-era artifacts modern TTS no longer produces. The tenth open-weights model here, [pellav2](#open-weights-leaderboard), was trained on current synthesis and scores **95.82 %**.
+- **Open weights are not the problem; stale training data is.** These nine were trained on ASVspoof-era artifacts modern TTS no longer produces. The two open-weights models trained on current synthesis, [pellav2](#open-weights-leaderboard) and [AntiDeepfake](#open-weights-leaderboard), score **95.82 %** and **70.47 %**.
 
 **Latency / RTF** (mixed provenance: see the note above; not measured on common hardware):
 - Reality Defender is the only system slower than real-time: ~5.7 s per file, longer than most clips in the set. Not viable for streaming.
-- Everything else runs faster than real-time. Among commercial systems, Pella Research reports the lowest per-file latency (~57 ms, but on a 4-second crop), then Corsound (180 ms), Pindrop (282 ms) and DETECT-World (399 ms); Resemble AI, Whispeak, Aurigin and Hive sit around RTF 0.33–0.40.
+- Everything else runs faster than real-time. Among commercial systems, DetectifAI reports the lowest per-file latency (~24 ms), then deetech.ai (~50 ms) and Pella Research (~57 ms, but on a 4-second crop), then NII Synthetiq (91 ms), Corsound (180 ms), Pindrop (282 ms) and DETECT-World (399 ms); Resemble AI, Whispeak and Hive sit around RTF 0.33–0.40. deetech.ai and Aurigin AI submitted no clip durations, so neither has an RTF and both are omitted from the scatter plot above.
 - Several open-source models are faster still (AST at ~5 ms): they run locally with no network hop, so their RTF is pure compute cost. At near-random accuracy that speed buys little.
 
 ### Error Profile
@@ -227,7 +239,7 @@ Outputs the per-model breakdown including per-format accuracy and the leaderboar
 
 ### Commercial APIs
 
-These nine entries come from eight vendors, since Resemble appears twice. All offer a hosted detection API; **Pella Research** additionally publishes its weights under MIT.
+These 13 entries come from 12 vendors, since Resemble appears twice. All offer a hosted detection API or a commercial licence; **Pella Research** additionally publishes its weights under MIT, and the **NII** Yamagishi Lab separately publishes the open-weights AntiDeepfake model listed among the open-source baselines below.
 
 | Vendor | Product / Model | Docs / Product page |
 |--------|-----------------|---------------------|
@@ -240,13 +252,18 @@ These nine entries come from eight vendors, since Resemble appears twice. All of
 | [**Corsound AI**](https://www.corsound.ai) | Deepfake Detect | https://apis.corsound.ai/ |
 | [**Hive**](https://thehive.ai) | AI-generated audio detection | https://docs.thehive.ai/docs/ai-generated-audio-detection |
 | [**Reality Defender**](https://www.realitydefender.com) | RealAPI | https://docs.realitydefender.com |
+| [**deetech.ai**](https://deetech.ai) | deetech.ai v2 | https://deetech.ai |
+| [**Fennura**](https://fennura.ai) | On-device detector (CPU-only inference) | https://fennura.ai |
+| [**DetectifAI**](https://detectif.ai) | Real-time audio deepfake detection | https://detectif.ai |
+| [**NII Yamagishi Lab**](https://yamagishilab.jp) | Synthetiq Audio v0.8-Beta (commercial licence) | https://yamagishilab.jp |
 
 ### Open-source baselines
 
-Two generations are included: **legacy** models trained on ASVspoof 2019 LA, and **modern** models trained on the newer ASVspoof 5 / VoxCelebSpoof corpora. Neither generation generalizes to the modern commercial TTS in this benchmark.
+Two generations of baseline are included: **legacy** models trained on ASVspoof 2019 LA, and **modern** models trained on the newer ASVspoof 5 / VoxCelebSpoof corpora. Neither generation generalizes to the modern commercial TTS in this benchmark. **NII AntiDeepfake** is listed here as an open-weights release rather than a baseline: it was submitted by its authors and scores well above both generations.
 
 | Model | Source | Architecture | Training data |
 |-------|--------|--------------|---------------|
+| [NII AntiDeepfake](https://huggingface.co/nii-yamagishilab/xls-r-2b-anti-deepfake) | nii-yamagishilab/xls-r-2b-anti-deepfake ([paper](https://arxiv.org/abs/2506.21090), ASRU 2025) | XLS-R 2B | see paper |
 | [Wav2Vec2 (2019 LA)](https://huggingface.co/Gustking/wav2vec2-large-xlsr-deepfake-audio-classification) | Gustking/wav2vec2-large-xlsr-deepfake-audio-classification | SSL XLSR + fine-tuned classifier | ASVspoof 2019 LA |
 | [AASIST (2019 LA)](https://github.com/clovaai/aasist) | clovaai/aasist | Graph attention on raw waveform | ASVspoof 2019 LA |
 | [RawNet2 (2019 LA)](https://huggingface.co/MattyB95/pre_trained_DF_RawNet2) | MattyB95/pre_trained_DF_RawNet2 | End-to-end CNN on raw waveform | ASVspoof 2019 LA |
