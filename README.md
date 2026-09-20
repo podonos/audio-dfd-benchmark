@@ -19,7 +19,7 @@ A neutral, public benchmark for evaluating audio deepfake detection systems on a
 | 1 | **[deetech.ai](https://deetech.ai)** | 4524 | 0.0% | **99.56%** | 0.996 | 0.4% | 0.4% | 50 | n/a |
 | 2 | **[Resemble DETECT-World](https://www.resemble.ai)** | 4524 | 0.0% | 99.47% | 0.995 | 0.7% | 0.4% | 399 | 0.12 |
 | 3 | **[Fennura](https://fennura.ai)** | 4524 | 0.0% | 98.63% | 0.986 | 1.2% | 1.5% | 553 | 0.14 |
-| 4 | **[Aurigin AI](https://aurigin.ai)** | 4524 | 0.0% | 98.21% | 0.982 | 2.4% | 1.1% | n/a | n/a |
+| 4 | **[Aurigin AI](https://aurigin.ai)** § | 4524 | 0.0% | 98.21% | 0.982 | 2.4% | 1.1% | n/a | n/a |
 | 5 | **[Resemble AI](https://www.resemble.ai)** ‡ | 4524 | 0.0% | 98.05% | 0.981 | 2.5% | 1.4% | 1,164 | 0.40 |
 | 6 | **[Whispeak](https://whispeak.io)** | 4524 | 0.0% | 97.70% | 0.977 | 2.9% | 1.7% | 1,052 | 0.39 |
 | 7 | **[Pella Research](https://pellaresearch.com)** † | 4524 | 0.0% | 95.82% | 0.959 | 5.5% | 2.8% | 57 | 0.021 |
@@ -50,6 +50,7 @@ A neutral, public benchmark for evaluating audio deepfake detection systems on a
 - **RTF**: real-time factor (lower is better). The mean of per-file latency/duration, so short clips dominate; it is *not* Lat(ms) divided by mean duration
 - **†**: weights are downloadable (see [Open-weights leaderboard](#open-weights-leaderboard)); on a bold row it marks a commercial vendor that also publishes them
 - **‡**: run by Podonos against the vendor's API; its Lat(ms)/RTF were measured by us, not self-reported
+- **§**: this row replaced an earlier result at the vendor's request. Aurigin previously appeared as a ‡ row at 96.75 % (FPR 1.5 %, FNR 5.0 %, 980 ms, RTF 0.33), run by Podonos against its API in April 2026. The row above is the vendor's own September 2026 submission for a newer model, and carries no timing data
 
 > **What is and isn't verified.** Podonos holds the gold labels privately and computes Acc%, F1, FPR% and FNR% itself, so **no vendor scores its own row** and the arithmetic behind every row is ours. What we cannot check is how a submitted `predictions.csv` was produced: except for the ‡ rows, we did not run the system, so the labels in the file are taken on trust.
 >
@@ -199,7 +200,7 @@ python scripts/run_wav2vec2.py   # Wav2Vec2 SSL (Gustking/wav2vec2-large-xlsr-de
 python scripts/run_lcnn.py       # LCNN-LFCC (MattyB95/pre_trained_DF_LFCC-LCNN)
 ```
 
-Each script writes `results/predictions_<model>.csv` with at least `filename`, `label` and `latency_ms`; confidence column names vary by model. The scorer reads only `filename`, `label`, `latency_ms` and `audio_duration_sec`, and these runners do not emit `audio_duration_sec`, so RTF is reported as N/A unless you add it.
+Each script writes `results/predictions_<model>.csv` with `filename`, `label`, `latency_ms` and `audio_duration_sec`; confidence column names vary by model and are ignored by the scorer, which reads only those four.
 
 ### 4. Commercial systems
 
