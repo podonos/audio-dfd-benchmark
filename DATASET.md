@@ -23,18 +23,18 @@ The bonafide speech recordings are drawn from three established public corpora:
 
 1. **VCTK Corpus** — 110 English speakers, multiple accents (https://datashare.ed.ac.uk/handle/10283/3443).
 2. **LJSPEECH** — single-speaker dataset of 13,100 short audio clips of a single speaker reading non-fiction passages (https://keithito.com/LJ-Speech-Dataset/).
-3. **LibriTTS-360** — 360-hour subset of LibriTTS, 904 English speakers (https://www.openslr.org/60/).
+3. **LibriTTS train-clean-360** — ~191 hours, 904 English speakers; the "360" names the LibriSpeech split it was rebuilt from, not its duration (https://www.openslr.org/60/).
 
 ## Fake (AI-Generated) Audio Sources
 
-The synthetic speech is generated using approximately **25 state-of-the-art text-to-speech and voice-cloning models**, all accessed via API from their respective vendors. Examples include:
+The synthetic speech is generated using approximately **25 state-of-the-art text-to-speech and voice-cloning models**, a mix of commercial APIs and open-weights models run locally. Examples include:
 
 - **ElevenLabs**
-- **Microsoft F5-TTS**
+- **F5-TTS**
 - **Chatterbox**
 - ...and others
 
-The full list of generators reflects the current commercial TTS landscape as of dataset release.
+The full list of generators reflects the current TTS landscape as of dataset release. Chatterbox is released by Resemble AI, which also appears on the leaderboard.
 
 ## Quality Verification
 
