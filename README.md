@@ -16,7 +16,7 @@ A neutral, public benchmark for evaluating audio deepfake detection systems on a
 
 | # | System | N | Rej% | Acc% | F1 | FPR% | FNR% | Lat(ms) | RTF |
 |---|--------|---|------|------|-----|------|------|---------|-----|
-| 1 | **[deetech.ai](https://deetech.ai)** | 4524 | 0.0% | **99.56%** | 0.996 | 0.4% | 0.4% | 50 | n/a |
+| 1 | **[deetech.ai](https://deetech.ai)** | 4524 | 0.0% | **99.56%** | 0.996 | 0.4% | 0.4% | 50 | 0.019 |
 | 2 | **[Resemble DETECT-World](https://www.resemble.ai)** | 4524 | 0.0% | 99.47% | 0.995 | 0.7% | 0.4% | 399 | 0.12 |
 | 3 | **[Fennura](https://fennura.ai)** | 4524 | 0.0% | 98.63% | 0.986 | 1.2% | 1.5% | 553 | 0.14 |
 | 4 | **[Aurigin AI](https://aurigin.ai)** § | 4524 | 0.0% | 98.21% | 0.982 | 2.4% | 1.1% | n/a | n/a |
@@ -92,13 +92,13 @@ The 95.82 % figure was produced by the public `pellav2` checkpoint, confirmed by
 Two caveats change how a row should be read:
 
 - **Pella Research's latency does not scale with clip length**, which is the signature of a fixed-length analysis window rather than a full-file read, so its RTF is not comparable to systems that read the whole clip. We did not run Pella ourselves and make no claim about its internals. The AASIST and RawNet2 runners here also score a fixed ~4-second window, taken from the start of the clip and zero-padded when the clip is shorter, so their RTF is not comparable either.
-- **deetech.ai and Aurigin AI submitted no clip durations**, so neither has an RTF and both are absent from the scatter plot.
+- **Aurigin AI submitted no timing data**, so it has no Lat(ms) or RTF and is absent from the scatter plot.
 
 **Open-source baselines: none of the nine legacy checkpoints generalize to modern TTS.** All nine sit in the 47.6–62.9 % band regardless of training era; ASVspoof 2019 LA and the newer ASVspoof 5 / VoxCelebSpoof models collapse alike on current voice cloning. Several are degenerate and call almost everything real: AST (VoxCelebSpoof), AASIST3 and Deepfake-V2. LCNN-LFCC emits a single class under our runner's fixed decision threshold, which sits outside the score range the checkpoint actually produces, so its 50.00 % reflects our harness rather than the model.
 
 **Stale training data is the problem, not open weights.** The two open-weights models trained on current synthesis both clear that band: [pellav2](#open-weights-leaderboard) and [NII AntiDeepfake](#open-weights-leaderboard). AntiDeepfake pairs one of the lowest false-positive rates on the board, 0.4 %, with an FNR of 58.6 %: it almost never false-flags real audio and misses close to 6 fakes in 10. That reads as a deliberate operating point rather than a failure to train.
 
-**Latency / RTF.** Mixed provenance, not measured on common hardware, so treat small differences as noise. Of the 21 systems with a measured RTF, all run faster than real time except Reality Defender; deetech.ai and Aurigin AI submitted no durations, so neither has one. Several open-source models are faster still, AST at ~5 ms, but they run locally with no network hop, and at near-random accuracy that speed buys little.
+**Latency / RTF.** Mixed provenance, not measured on common hardware, so treat small differences as noise. Of the 22 systems with a measured RTF, all run faster than real time except Reality Defender; Aurigin AI submitted no timing data, so it has none. Several open-source models are faster still, AST at ~5 ms, but they run locally with no network hop, and at near-random accuracy that speed buys little.
 
 ### Error Profile
 
@@ -233,7 +233,7 @@ These 13 entries come from 12 vendors, since Resemble appears twice. All offer a
 
 | Row | Vendor | Product / Model | Docs / Product page |
 |----:|--------|-----------------|---------------------|
-| 1 | [**deetech.ai**](https://deetech.ai) | Audio deepfake detector (v2) | https://deetech.ai |
+| 1 | [**deetech.ai**](https://deetech.ai) | Audio deepfake detector (v2), also offered as [deetech.au](https://deetech.au) | https://deetech.ai |
 | 2 | [**Resemble AI**](https://www.resemble.ai) | DETECT-World | https://docs.resemble.ai/detect |
 | 3 | [**Fennura**](https://fennura.ai) | On-device detector, CPU-only inference | https://fennura.ai |
 | 4 | [**Aurigin AI**](https://aurigin.ai) | Apollo deepfake detection | https://docs.aurigin.ai |
