@@ -16,9 +16,12 @@ ALL_MODELS = [
     # Open-source baselines (modern, 2024+ training)
     "aasist_asvspoof5", "ast_asvspoof5", "ast_voxcelebspoof",
     "wav2vec2_garystafford", "melodymachine_v2",
-    # Commercial APIs
-    "resemble", "resemble_detect_world", "hive", "reality_defender", "aurigin",
-    "pindrop", "whispeak", "corsound", "pella_research",
+    # Commercial APIs and commercially licensed systems
+    "deetech", "resemble_detect_world", "fennura", "aurigin_v2", "resemble",
+    "whispeak", "pella_research", "pindrop", "detectifai", "nii_synthetiq",
+    "corsound", "hive", "reality_defender",
+    # Open weights, submitted by its authors
+    "nii_antideepfake",
 ]
 
 

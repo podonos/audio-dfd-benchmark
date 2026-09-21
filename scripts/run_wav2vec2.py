@@ -6,6 +6,8 @@ import os
 import time
 import csv
 
+import soundfile as sf
+
 import torch
 import librosa
 from transformers import AutoModelForAudioClassification, AutoFeatureExtractor
@@ -15,6 +17,21 @@ ORIG_DATASET_DIR = os.path.join(os.path.dirname(__file__), "..", "dataset")
 LABELS_CSV = os.path.join(os.path.dirname(__file__), "..", "dataset", "labels_speech.csv")
 OUTPUT_CSV = os.path.join(os.path.dirname(__file__), "..", "results", "predictions_wav2vec2.csv")
 
+
+def audio_duration_sec(path):
+    """Clip length in seconds, for the submission format's audio_duration_sec
+    column. RTF is latency/duration, so a submission without this column is
+    scored with RTF = N/A.
+
+    Deliberately measured on the converted 16 kHz WAV rather than the original
+    container: for a WAV this is frames/samplerate exactly, whereas a lossy
+    container reports encoder delay and padding as part of its duration (~61 ms
+    on .mp3 here, ~23 ms on .m4a, 0 on .flac/.wav). The decoded length is what
+    vendors report, so this keeps our RTF comparable with theirs."""
+    try:
+        return f"{sf.info(path).duration:.4f}"
+    except Exception:
+        return ""
 
 def load_filenames():
     if os.path.exists(LABELS_CSV):
@@ -64,6 +81,7 @@ def main():
                 "confidence_real": "",
                 "confidence_fake": "",
                 "latency_ms": "",
+                "audio_duration_sec": "",
             })
             continue
 
@@ -109,6 +127,7 @@ def main():
                 "confidence_real": conf_real,
                 "confidence_fake": conf_fake,
                 "latency_ms": f"{elapsed_ms:.2f}",
+                "audio_duration_sec": audio_duration_sec(wav_path),
             })
 
             if (i + 1) % 100 == 0:
@@ -123,13 +142,14 @@ def main():
                 "confidence_real": "",
                 "confidence_fake": "",
                 "latency_ms": "",
+                "audio_duration_sec": "",
             })
 
     # Write results
     os.makedirs(os.path.dirname(OUTPUT_CSV), exist_ok=True)
     with open(OUTPUT_CSV, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
-            "filename", "label", "confidence_real", "confidence_fake", "latency_ms"
+            "filename", "label", "confidence_real", "confidence_fake", "latency_ms", "audio_duration_sec"
         ])
         writer.writeheader()
         writer.writerows(results)

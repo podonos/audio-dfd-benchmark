@@ -28,6 +28,21 @@ CONFIG_PATH = os.path.join(AASIST_DIR, "config", "RawNet2_baseline.conf")
 OUTPUT_CSV = os.path.join(os.path.dirname(__file__), "..", "results", "predictions_rawnet2.csv")
 
 
+def audio_duration_sec(path):
+    """Clip length in seconds, for the submission format's audio_duration_sec
+    column. RTF is latency/duration, so a submission without this column is
+    scored with RTF = N/A.
+
+    Deliberately measured on the converted 16 kHz WAV rather than the original
+    container: for a WAV this is frames/samplerate exactly, whereas a lossy
+    container reports encoder delay and padding as part of its duration (~61 ms
+    on .mp3 here, ~23 ms on .m4a, 0 on .flac/.wav). The decoded length is what
+    vendors report, so this keeps our RTF comparable with theirs."""
+    try:
+        return f"{sf.info(path).duration:.4f}"
+    except Exception:
+        return ""
+
 def load_filenames():
     if os.path.exists(LABELS_CSV):
         names = []
@@ -111,6 +126,7 @@ def main():
                 "raw_score_bonafide": "",
                 "raw_score_spoof": "",
                 "latency_ms": "",
+                "audio_duration_sec": "",
             })
             continue
 
@@ -137,6 +153,7 @@ def main():
                 "raw_score_bonafide": f"{output[0][0].item():.6f}",
                 "raw_score_spoof": f"{output[0][1].item():.6f}",
                 "latency_ms": f"{elapsed_ms:.2f}",
+                "audio_duration_sec": audio_duration_sec(wav_path),
             })
 
             if (i + 1) % 100 == 0:
@@ -154,6 +171,7 @@ def main():
                 "raw_score_bonafide": "",
                 "raw_score_spoof": "",
                 "latency_ms": "",
+                "audio_duration_sec": "",
             })
 
     # Write results
@@ -161,7 +179,7 @@ def main():
     with open(OUTPUT_CSV, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
             "filename", "label", "confidence_real", "confidence_fake",
-            "raw_score_bonafide", "raw_score_spoof", "latency_ms"
+            "raw_score_bonafide", "raw_score_spoof", "latency_ms", "audio_duration_sec"
         ])
         writer.writeheader()
         writer.writerows(results)
