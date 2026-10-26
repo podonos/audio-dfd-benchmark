@@ -21,9 +21,9 @@ The benchmark dataset contains **4,524 audio files** for binary classification (
 
 The bonafide speech recordings are drawn from three established public corpora:
 
-1. **VCTK Corpus** — 110 English speakers, multiple accents (https://datashare.ed.ac.uk/handle/10283/3443).
-2. **LJSPEECH** — single-speaker dataset of 13,100 short audio clips of a single speaker reading non-fiction passages (https://keithito.com/LJ-Speech-Dataset/).
-3. **LibriTTS train-clean-360** — ~191 hours, 904 English speakers; the "360" names the LibriSpeech split it was rebuilt from, not its duration (https://www.openslr.org/60/).
+1. **VCTK Corpus**: 110 English speakers, multiple accents (https://datashare.ed.ac.uk/handle/10283/3443).
+2. **LJSPEECH**: single-speaker dataset of 13,100 short audio clips of a single speaker reading non-fiction passages (https://keithito.com/LJ-Speech-Dataset/).
+3. **LibriTTS train-clean-360**: ~191 hours, 904 English speakers; the "360" names the LibriSpeech split it was rebuilt from, not its duration (https://www.openslr.org/60/).
 
 ## Fake (AI-Generated) Audio Sources
 
@@ -81,18 +81,18 @@ Each track keeps the 50/50 class balance and the same hidden labels as the studi
 
 ## Gold Standard Labels
 
-The ground-truth labels (`labels_speech.csv`) are **NOT included in this public release** to prevent overfitting and to maintain the benchmark's role as an independent evaluation set. Email your `predictions.csv` to **hello@podonos.com** to be scored against the private gold standard.
+The ground-truth labels (`labels_speech.csv`) are **NOT included in this public release** to prevent overfitting and to maintain the benchmark's role as an independent evaluation set. Email your `predictions.csv` to **dfd-submission@podonos.com** to be scored against the private gold standard.
 
 ## Submission Format
 
-Produce a `predictions.csv` with three columns: `filename`, `label`, and `latency_ms` (mean per-file inference time in milliseconds):
+Produce a `predictions.csv` with four columns: `filename`, `label`, `latency_ms` (per-file inference time in milliseconds) and `audio_duration_sec`:
 
 ```csv
-filename,label,latency_ms
-0.flac,real,247.09
-1.webm,fake,493.58
-2.mp3,real,289.01
+filename,label,latency_ms,audio_duration_sec
+0.flac,real,247.09,1.5325
+1.webm,fake,493.58,8.2336
+2.mp3,real,289.01,3.4410
 ...
 ```
 
-Labels must be exactly `real` or `fake` (lowercase). `latency_ms` is used to report the leaderboard's Lat(ms) / RTF columns; leave it blank if you cannot measure it. Email your `predictions.csv` to **hello@podonos.com**.
+`filename`, `label` and `latency_ms` are required on every row. Full rules and the monthly schedule are in the README's [Submission Format](README.md#submission-format). Email your `predictions.csv` to **dfd-submission@podonos.com**.
